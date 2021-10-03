@@ -17,7 +17,7 @@ const CountDown = ({handleSelectMode}) => {
         return () => clearInterval(timer);
     }, [counter, countDownType, handleSelectMode]);
 
-    const handleCounter = (e) => {
+    const handleInputCounter = (e) => {
         const target = e.target.value;
         const newCounter = parseInt(target);
         console.log('newCounter', newCounter);
@@ -41,7 +41,7 @@ const CountDown = ({handleSelectMode}) => {
                 {
                     countDownType === 'set' ? (
                         <div className="setCountDown-panel">
-                            <input type="text" value={counter} onChange={handleCounter} onKeyDown={e => handleInputEnter('start', e)} />
+                            <input type="text" value={counter} onChange={handleInputCounter} onKeyDown={e => handleInputEnter('start', e)} />
                         </div>
                     ) : (
                         <div className="countDown-panel">
