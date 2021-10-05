@@ -1,26 +1,37 @@
 import './style.scss'
 import { useState, useEffect } from 'react';
+import SvgCircle from '../SvgCircle'
+import Notify from '../Notify'
 
 const CountDown = ({handleSelectMode}) => {
     const [countDownType, setCountDownType] = useState('set')
     const [counter, setCounter] = useState(0);
+    const [counterMax, setMax] = useState(0);
 
     useEffect(() => {
         const timer = countDownType === 'start' && counter >= 0 && setInterval(() => {
             if (counter > 0) {
                 setCounter(counter - 1)
             } else {
-                console.log('too hard')
                 handleSelectMode('drawing');
             }
         }, 1000);
         return () => clearInterval(timer);
     }, [counter, countDownType, handleSelectMode]);
 
+    useEffect(() => {
+        if (countDownType === 'set') {
+            setMax(0)
+        } else if (countDownType === 'start') {
+            if (counterMax === 0) {
+                setMax(counter)
+            }
+        }
+    }, [counter, countDownType, counterMax])
+
     const handleInputCounter = (e) => {
         const target = e.target.value;
         const newCounter = parseInt(target);
-        console.log('newCounter', newCounter);
         if (!isNaN(newCounter)) setCounter(newCounter);
     }
     
@@ -36,32 +47,39 @@ const CountDown = ({handleSelectMode}) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="countDown flex-center">
+            <div className="countDown-panel">
                 {
                     countDownType === 'set' ? (
-                        <div className="setCountDown-panel">
-                            <input type="text" value={counter} onChange={handleInputCounter} onKeyDown={e => handleInputEnter('start', e)} />
+                        <div className="countDown-panel-clock mb-3">
+                            <SvgCircle>
+                                <input className="countDown-panel-input" maxLength="3" type="text" value={counter} onChange={handleInputCounter} onKeyDown={e => handleInputEnter('start', e)} />
+                            </SvgCircle>
                         </div>
                     ) : (
-                        <div className="countDown-panel">
-                            {counter}
+                        <div className="countDown-panel-clock mb-3">
+                            <SvgCircle max={counterMax} done={counter}>{counter}</SvgCircle>
                         </div>
                     )
                 }
-                <div className="mb-2">
-                    <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('start')}>Start</button>
+                <div className="d-flex justify-content-between mb-3">
+                    <div>
+                        <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('start')}>Start</button>
+                    </div>
+                    <div>
+                        <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('stop')}>Stop</button>
+                    </div>
                 </div>
-                <div className="mb-2">
-                    <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('stop')}>Stop</button>
-                </div>
-                <div className="mb-2">
-                    <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('set')}>Reset</button>
-                </div>
-                <div>
-                    <button type="button" className="btn btn-primary" onClick={() => handleSelectMode('init')}>Back</button>
+                <div className="d-flex justify-content-between mb-3">
+                    <div className="mb-2">
+                        <button type="button" className="btn btn-primary" onClick={() => handleCountDownType('set')}>Reset</button>
+                    </div>
+                    <div>
+                        <button type="button" className="btn btn-primary" onClick={() => handleSelectMode('init')}>Back</button>
+                    </div>
                 </div>
             </div>
+            <Notify message={'test'} type={'error'} />
         </div>
     );
 }

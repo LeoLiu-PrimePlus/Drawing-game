@@ -1,15 +1,17 @@
 .main {
   width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 3vh 0;
 }
 
 .card {
-  width: 70vw;
-  min-width: 992px;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.tipTitle {
+  padding: 15px 10px;
+  text-align: center;
 }

@@ -10,7 +10,7 @@ const DrawingList = ({ className }) => {
     const dispatch = useDispatch();
     const [name , setName] = useState('');
     const [deleteDrawingLists, setDeleteDrawingLists] = useState([]);
-    console.log('drawingLists', drawingLists)
+    const [toggleLists, setToggleLists] = useState(false);
 
     const handleInputChange = (e) => {
         setName(e.target.value);
@@ -33,10 +33,8 @@ const DrawingList = ({ className }) => {
 
     const handleAddList = () => {
         const duplicateName = drawingLists.some(item => {
-            console.log(item.name, name)
             return item.name === name
         })
-        console.log('duplicateName', duplicateName)
         if (!duplicateName) {
             dispatch(addDrawingList(name));
             setName('');
@@ -44,7 +42,6 @@ const DrawingList = ({ className }) => {
     }
 
     const handleDeleteList = () => {
-        console.log('deleteDrawingLists', deleteDrawingLists);
         dispatch(deleteDrawingList(deleteDrawingLists));
     }
 
@@ -73,8 +70,13 @@ const DrawingList = ({ className }) => {
         return randName
     }
 
+    const handleToggleLists =() => {
+        setToggleLists(!toggleLists)
+    }
+
     return (
         <div className={`${className} drawingList`}>
+            
             <div className="mb-2">
                 <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => handleGengerateNameList()}>Generate new lists</button>
             </div>
@@ -84,11 +86,12 @@ const DrawingList = ({ className }) => {
             <div className="mb-2">
                 <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => handleDeleteAllLists()}>Delete all drawing list</button>
             </div>
-            <div className="input-group-sm mb-2">
-                <input type="text" className="form-control mb-1" value={name} onChange={(e) => handleInputChange(e)} onKeyDown={e => handleInputEnter(e)} placeholder="Add list" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={() => handleAddList()}>Add list</button>
+            <div className="input-group-sm mb-3 d-flex">
+                <input type="text" className="w-50 form-control" value={name} onChange={(e) => handleInputChange(e)} onKeyDown={e => handleInputEnter(e)} placeholder="Add list" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+                <button className="btn btn-outline-secondary btn-sm" type="button" id="button-addon2" onClick={() => handleAddList()}>Add list</button>
             </div>
-            <div className="drawingList-lists list-group border-m shadow">
+            <div className={`drawingList-lists list-group border-m shadow ${toggleLists ? 'drawingList-lists-hide' : ''}`}>
+                <div className="drawingList-lists-toggle text-white" onClick={() => handleToggleLists()}>Toggle lists</div>
                 {
                     drawingLists.map(list => (
                         <label className="list-group-item rounded-0" key={list.id}>

@@ -5,8 +5,8 @@ import DrawingList from '../DrawingList'
 const CardContent = () => {
     return (
         <div className="cardContent bg-white row">
-            <DrawingView className={'col-8'} />
-            <DrawingList className={'col-4'} />
+            <DrawingList className={'col-lg-4'} />
+            <DrawingView className={'col-12 col-lg-8'} />
         </div>
     );
 }

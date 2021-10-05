@@ -1,0 +1,10 @@
+.svgContainer {
+    transform: rotate(-90deg) rotateX(180deg);
+    position: relative;
+    .textContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg) rotateX(180deg);
+    }
+}
