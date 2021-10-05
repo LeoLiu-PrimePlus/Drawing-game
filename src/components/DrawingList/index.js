@@ -2,8 +2,8 @@ import './style.scss';
 import nameData from '../../data/name.json'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectDrawingLists } from '../../store/selectors';
-import { addDrawingList, generateNameLists, deleteDrawingList, deleteAllDrawingLists } from '../../store/actions';
-import { useState } from 'react'
+import { addDrawingList, generateNameLists, deleteDrawingList, deleteAllDrawingLists, notifyMessage } from '../../store/actions';
+import { useState } from 'react';
 
 const DrawingList = ({ className }) => {
     const drawingLists = useSelector(selectDrawingLists);
@@ -24,7 +24,6 @@ const DrawingList = ({ className }) => {
     }
 
     const handleCheckBoxChange = (e, id) => {
-        console.log(e.target.checked, id);
         if (e.target.checked) {
             const deleteLists = [...deleteDrawingLists, id];
             setDeleteDrawingLists(deleteLists);
@@ -35,9 +34,21 @@ const DrawingList = ({ className }) => {
         const duplicateName = drawingLists.some(item => {
             return item.name === name
         })
-        if (!duplicateName) {
+        if (!duplicateName && name !== '') {
             dispatch(addDrawingList(name));
             setName('');
+        } else if (duplicateName) {
+            const notifyObj = {
+                msg: 'Duplicate Name',
+                type: 'error'
+            }
+            dispatch(notifyMessage(notifyObj));
+        } else if (name === '') {
+            const notifyObj = {
+                msg: 'Should add a name',
+                type: 'error'
+            }
+            dispatch(notifyMessage(notifyObj));
         }
     }
 
@@ -51,7 +62,6 @@ const DrawingList = ({ className }) => {
 
     const handleGengerateNameList = () => {
         const newDrawingLists = [...Array(20)].map(() => randGenerateName())
-        console.log(newDrawingLists)
         dispatch(generateNameLists(newDrawingLists))
     }
 
@@ -93,12 +103,15 @@ const DrawingList = ({ className }) => {
             <div className={`drawingList-lists list-group border-m shadow ${toggleLists ? 'drawingList-lists-hide' : ''}`}>
                 <div className="drawingList-lists-toggle text-white" onClick={() => handleToggleLists()}>Toggle lists</div>
                 {
-                    drawingLists.map(list => (
-                        <label className="list-group-item rounded-0" key={list.id}>
-                            <input className="form-check-input me-1" type="checkbox" onChange={(e) => handleCheckBoxChange(e, list.id)} value="" />
-                            { list.name }
-                        </label>
-                    ))
+                    drawingLists.length > 0 ? (
+                        drawingLists.map(list => (
+                            <label className="list-group-item rounded-0" key={list.id}>
+                                <input className="form-check-input me-1" type="checkbox" onChange={(e) => handleCheckBoxChange(e, list.id)} value="" />
+                                { list.name }
+                            </label>
+                        ))
+                    ) : <div className="p-2">There's no drawing lists, please add one at least.</div>
+                    
                 }
             </div>
         </div>

@@ -1,7 +1,6 @@
-import './style.scss'
+import './style.scss';
 import { useState, useEffect } from 'react';
-import SvgCircle from '../SvgCircle'
-import Notify from '../Notify'
+import SvgCircle from '../SvgCircle';
 
 const CountDown = ({handleSelectMode}) => {
     const [countDownType, setCountDownType] = useState('set')
@@ -79,7 +78,6 @@ const CountDown = ({handleSelectMode}) => {
                     </div>
                 </div>
             </div>
-            <Notify message={'test'} type={'error'} />
         </div>
     );
 }

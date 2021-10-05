@@ -1,4 +1,10 @@
-import { ADD_DRAWING_LIST, GENERATE_NAME_LISTS, DELETE_DRAWING_LIST, DELETE_ALL_DRAWING_LISTS } from './actionTypes';
+import {
+    ADD_DRAWING_LIST,
+    GENERATE_NAME_LISTS,
+    DELETE_DRAWING_LIST,
+    DELETE_ALL_DRAWING_LISTS,
+    NOTIFY_MESSAGE
+} from './actionTypes';
 
 export const addDrawingList = (name) => {
     return {
@@ -24,5 +30,12 @@ export const deleteDrawingList = (lists) => {
 export const deleteAllDrawingLists = () => {
     return {
         type: DELETE_ALL_DRAWING_LISTS
+    }
+}
+
+export const notifyMessage = (notify) => {
+    return {
+        type: NOTIFY_MESSAGE,
+        payload: { notify }
     }
 }

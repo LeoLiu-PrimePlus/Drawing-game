@@ -1,0 +1,16 @@
+.notify {
+    padding: 10px 20px;
+    position: fixed;
+    left: 50%;
+    bottom: -50px;
+    transform: translate(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.notify-slide {
+    opacity: 1;
+    bottom: 30px;
+    transform: translate(-50%);
+}

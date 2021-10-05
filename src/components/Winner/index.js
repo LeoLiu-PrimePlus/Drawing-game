@@ -12,13 +12,13 @@ const Winner = ({ handleSelectMode }) => {
                     drawingLists.length > 0 ? (
                         <div>
                             Congratulation for the drawing game winner!!<br/>
-                            <div className="flex-center">
+                            <div className="flex-center text-success fs-3">
                                 {drawingLists[Math.floor(Math.random() * drawingLists.length)].name}
                             </div>
                         </div>
                     )
                     :
-                    "There's no drawing list, please add one at least."
+                    "There's no drawing lists, please add one at least."
                 }
             </div>
             <div className="flex-center">
