@@ -1,3 +1,6 @@
+# Side Project Description
+This side project is made for a drawing game, you can generate a list which havs random drawing lists, or add drwaing list by yourself. It's still has a lot of problem need imporve, if you find any bug or ux problem, please let me know, I'll fix it as soon as I can.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
