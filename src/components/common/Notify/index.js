@@ -19,7 +19,7 @@ const Notify = () => {
         return () => {
             clearTimeout(closeNotify)
         }
-    }, [dispatch])
+    }, [dispatch, notifyMsg])
     
     return (
         <div className={`notify text-white fs-6 border-m ${notifyMsg.type === 'error' ? 'bg-danger' : 'bg-success'} ${notifyMsg.msg !== '' ? 'notify-show notify-slide' : '' }`}>

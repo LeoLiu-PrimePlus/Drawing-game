@@ -1,4 +1,4 @@
-import './style.scss'
+import './style.scss';
 import { useSelector } from 'react-redux';
 import { selectDrawingLists } from '../../store/selectors';
 

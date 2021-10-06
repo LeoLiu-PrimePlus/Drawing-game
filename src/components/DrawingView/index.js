@@ -1,7 +1,7 @@
 import './style.scss';
 import { useState } from 'react';
 import CountDown from '../CountDown';
-import { SwitchTransition, CSSTransition } from "react-transition-group";
+// import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Winner from '../Winner'
 import { selectDrawingLists } from '../../store/selectors';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,14 +28,6 @@ const DrawingView = ({ className }) => {
 
     return (
         <div  id="targetId" className={`${className} drawingView flex-center`}>
-            <SwitchTransition mode={'out-in'}>
-                <CSSTransition
-                    key={step}
-                    addEndListener={(node, done) => {
-                    node.addEventListener("transitionend", done, false);
-                    }}
-                    classNames="fade"
-                >
                     {
                         step === 'init' ? (
                             <div className="drawingView-panel flex-center">
@@ -59,8 +51,6 @@ const DrawingView = ({ className }) => {
                             </div> 
                         ) : <Winner handleSelectMode={handleSelectMode} />
                     }
-                </CSSTransition>
-            </SwitchTransition>
         </div>
     );
 }

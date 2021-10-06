@@ -1,17 +1,20 @@
 import './style.scss';
 import { useState, useEffect } from 'react';
 import SvgCircle from '../SvgCircle';
+import { useDispatch } from 'react-redux';
+import { notifyMessage } from '../../store/actions';
 
 const CountDown = ({handleSelectMode}) => {
     const [countDownType, setCountDownType] = useState('set')
     const [counter, setCounter] = useState(0);
     const [counterMax, setMax] = useState(0);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const timer = countDownType === 'start' && counter >= 0 && setInterval(() => {
             if (counter > 0) {
-                setCounter(counter - 1)
-            } else {
+                setCounter(counter - 1);
+            } else if (counter === 0) {
                 handleSelectMode('drawing');
             }
         }, 1000);
@@ -36,13 +39,35 @@ const CountDown = ({handleSelectMode}) => {
     
     const handleCountDownType = (type) => {
         if (type !== countDownType) {
-            setCountDownType(type)
+            if (type === 'start') {
+                if (counter && counter !== 0) {
+                    setCountDownType(type)
+                } else {
+                    const notifyObj = {
+                        msg: 'Please input timer',
+                        type: 'error'
+                    }
+                    dispatch(notifyMessage(notifyObj));
+                }
+            } else if (type === 'stop') {
+                if (counter && counter !== 0) {
+
+                } else {
+                    const notifyObj = {
+                        msg: 'Please input timer',
+                        type: 'error'
+                    }
+                    dispatch(notifyMessage(notifyObj));
+                }
+            } else {
+                setCountDownType(type);
+            }
             if (type === 'set') setCounter(0)
         };
     }
 
     const handleInputEnter = (type, e) => {
-        if (e.key === 'Enter') handleCountDownType(type)
+        if (e.key === 'Enter') handleCountDownType(type);
     }
 
     return (
