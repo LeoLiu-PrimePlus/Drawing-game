@@ -7,11 +7,8 @@ import Notify from "./components/common/Notify";
 const App = () => {
   return (
     <div className="wrap">
-      <div className="content col-12 p-3 border-m ">
+      <div className="content col-12 border-s">
         <Header />
-        <h4 className="tipTitle text-white fs-6">
-          Please add drawinglists before you start this game
-        </h4>
         <Content />
       </div>
       <ScrollButton />

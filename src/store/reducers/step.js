@@ -1,6 +1,6 @@
 import { CHANGE_STEP }  from '../actionTypes';
 
-const initialState = 'addLists';
+const initialState = 'init';
 
 export default function notifyMsgReducer (state = initialState, action) {
     const payload = action.payload;

@@ -7,17 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $primary;
+  background-color: #FAFAFA;
 }
 
 .content {
   margin: 0 auto;
   overflow: hidden;
-  max-width: 900px;
-  border: 1px solid #ffffff;
-}
-
-.tipTitle {
-  text-align: left;
-  padding: 10px 0;
+  min-width: 992px;
+  max-width: 60vw;
+  height: 700px;
+  background-color: $primary;
 }

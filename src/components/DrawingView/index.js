@@ -3,6 +3,7 @@ import "./style.scss";
 import CountDown from "../CountDown";
 // import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Winner from "../Winner";
+import Button from '../common/Button'
 import { selectDrawingLists, selectStep } from "../../store/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { notifyMessage, changeStep } from "../../store/actions";
@@ -30,29 +31,24 @@ const DrawingView = ({ className }) => {
   };
 
   return (
-    <div id="targetId" className={`${className} drawingView flex-center`}>
+    <div id="targetId" className={`${className} ${step !== 'init' ? 'p-0' : ''} drawingView h-100`}>
       {step === "init" ? (
-        <div className="drawingView-panel flex-center">
+        <div className="drawingView-panel h-100">
           {step === "init" ? (
             <div>
-              <div className="mb-4">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => handleSelectMode("drawing")}
-                >
-                  Start without set countdown
-                </button>
+              <div className="mb-3 d-flex align-items-center">
+                <Button label={'Start without set countdown'} className={'btn text-white p-0'} param={'drawing'} handleClick={handleSelectMode}>
+                  <i className="fas fa-dice-d6 text-white me-2"></i>
+                </Button>
               </div>
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => handleSelectMode("countDown")}
-                >
-                  Start set countdown
-                </button>
+              <div className="mb-4 d-flex align-items-center">
+                <Button label={'Start set countdown'} className={'btn text-white p-0'} param={'countDown'} handleClick={handleSelectMode}>
+                  <i className="far fa-clock text-white me-2"></i>
+                </Button>
               </div>
+              <h4 className="tipTitle text-white">
+                Please add drawinglists before you start this game~~!!
+              </h4>
             </div>
           ) : (
             step === "countDown" && (
@@ -61,7 +57,7 @@ const DrawingView = ({ className }) => {
           )}
         </div>
       ) : step === "countDown" ? (
-        <div className="drawingView-panel flex-center">
+        <div className="drawingView-panel h-100">
           <CountDown handleSelectMode={handleSelectMode} />
         </div>
       ) : (

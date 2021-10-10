@@ -2,6 +2,11 @@
   padding: 30px;
   .drawingView-panel {
     width: 100%;
+    .tipTitle {
+      text-align: left;
+      padding: 10px 0;
+      font-size: 0.8rem;
+    }
   }
 }
 

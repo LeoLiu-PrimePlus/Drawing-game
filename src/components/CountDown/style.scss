@@ -1,10 +1,29 @@
+@import "../../styles/variables.scss";
+
 .countDown {
-  .countDown-panel-input {
-    width: 100%;
+  position: relative;
+  &-bg--right {
+    background-color: #E5F3FF;
+  }
+  .countDown-clock-input {
+    width: 32px;
     font-size: 50px;
     text-align: center;
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
   }
-  .countDown-panel-input:focus {
+  .countDown-clock-input:focus {
     outline: #3888ff;
+    // background-color: rgba($color: #ffffff, $alpha: 1.0);
+  }
+  .countDown-clock {
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    z-index: 100;
+    // transform: translateY(-60%);
+    transform: translate(-40%, -61%);
   }
 }

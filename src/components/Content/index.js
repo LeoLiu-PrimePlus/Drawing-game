@@ -8,12 +8,16 @@ import { useSelector } from "react-redux";
 const Content = () => {
   const step = useSelector(selectStep);
   return (
-    <div className="cardContent row">
+    <div className="cardContent row h-100">
         {
-            step === 'addLists' ?
-            <DrawingList className={"col-lg-4"} /> :
-            <DrawingView className={"col-12 col-lg-8"} />
+            step === 'init' ? (
+              <>
+                <DrawingView className={"col-12 col-lg-6"} />
+                <DrawingList className={"col-lg-6"} />
+              </>
+            ) :<DrawingView className={"col-12"} />
         }      
+        
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import "./style.scss";
 import nameData from "../../data/name.json";
+import Button from '../common/Button'
 import { useSelector, useDispatch } from "react-redux";
 import { selectDrawingLists } from "../../store/selectors";
 import {
@@ -101,34 +102,22 @@ const DrawingList = ({ className }) => {
 
   return (
     <div className={`${className} drawingList`}>
-      <div className="mb-2">
-        <button
-          type="button"
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => handleGengerateNameList()}
-        >
-          Generate new lists
-        </button>
+      <div className="mb-1 d-flex align-items-center">
+        <Button label={'Generate new lists'} className={'btn text-white'} handleClick={handleGengerateNameList}>
+          <i className="fas fa-plus text-white me-2"></i>
+        </Button>
       </div>
-      <div className="mb-2">
-        <button
-          type="button"
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => handleDeleteList()}
-        >
-          Delete selected list
-        </button>
+      <div className="mb-1">
+        <Button label={'Delete selected list'} className={'btn text-white'} handleClick={handleDeleteList}>
+          <i className="far fa-trash-alt text-white me-2"></i>
+        </Button>
       </div>
-      <div className="mb-2">
-        <button
-          type="button"
-          className="btn btn-outline-secondary btn-sm"
-          onClick={() => handleDeleteAllLists()}
-        >
-          Delete all drawing list
-        </button>
+      <div className="mb-1">
+        <Button label={'Delete all drawing list'} className={'btn text-white'} handleClick={handleDeleteAllLists}>
+          <i className="far fa-trash-alt text-white me-2"></i>
+        </Button>
       </div>
-      <div className="input-group-sm mb-3 d-flex">
+      <div className="drawingList-input-group input-group-sm mb-3 d-flex">
         <input
           type="text"
           className="w-50 form-control"
@@ -139,43 +128,38 @@ const DrawingList = ({ className }) => {
           aria-label="Recipient's username"
           aria-describedby="button-addon2"
         />
-        <button
-          className="btn btn-outline-secondary btn-sm"
-          type="button"
-          id="button-addon2"
-          onClick={() => handleAddList()}
-        >
-          Add list
-        </button>
+        <Button className={'btn btn-sm bg-white'} handleClick={handleAddList}>
+          <i className="drawingList-input-icon fas fa-plus"></i>
+        </Button>
       </div>
       <div
-        className={`drawingList-lists list-group border-m shadow ${
-          toggleLists ? "drawingList-lists-hide" : ""
-        }`}
+        className="drawingList-lists list-group"
       >
+        <h4 className="drawingList-lists-header text-white">
+          Drawing lists
+        </h4>
         <div
-          className="drawingList-lists-toggle text-white"
+          className="drawingList-lists-toggle"
           onClick={() => handleToggleLists()}
         >
           Toggle lists
         </div>
-        {drawingLists.length > 0 ? (
-          drawingLists.map((list) => (
-            <label className="list-group-item rounded-0" key={list.id}>
-              <input
-                className="form-check-input me-1"
-                type="checkbox"
-                onChange={(e) => handleCheckBoxChange(e, list.id)}
-                value=""
-              />
-              {list.name}
-            </label>
-          ))
-        ) : (
-          <div className="p-2">
-            There's no drawing lists, please add one at least.
-          </div>
-        )}
+        <div className={`drawingList-lists-content ${
+          toggleLists ? "drawingList-lists-content-hide" : ""
+        }`}>
+          {drawingLists.length > 0 ? (
+            drawingLists.map((list) => (
+              <label className="list-group-item rounded-0 text-white" key={list.id}>
+                <input className="form-check-input me-1" type="radio" onChange={(e) => handleCheckBoxChange(e, list.id)} />
+                {list.name}
+              </label>
+            ))
+          ) : (
+            <div className="text-white p-2">
+              There's no drawing lists, please add one at least.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

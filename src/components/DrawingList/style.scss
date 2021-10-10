@@ -1,8 +1,44 @@
 .drawingList {
   padding: 20px 40px;
+  &-input-group {
+    padding-left: 0.6rem;
+    input {
+      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      border: none;
+    }
+    button {
+      border-bottom-left-radius: 0 !important;
+      border-top-left-radius: 0 !important;
+    }
+    i {
+      color: #00A7FF;
+    }
+  }
   &-lists {
-    height: 400px;
-    overflow: scroll;
+    overflow: hidden;
+    &-toggle {
+      display: none;
+    }
+    h4 {
+      font-size: 1.2rem;
+      margin: 0;
+      background-color: #335A83;
+      padding: 5px 17px;
+    }
+    .list-group-item {
+      border-bottom: 1px solid #335A83;
+      font-size: 0.8rem;
+      background-color: transparent;
+      input {  
+        background-color: transparent;
+        border: 1px solid #ffffff;
+      }
+    }
+    &-content {
+      height: 350px;
+      overflow-y: auto;
+    }
   }
 }
 
@@ -12,27 +48,29 @@
     &-lists {
       padding-top: 60px;
       position: relative;
-      height: 400px;
-      overflow: scroll;
-      transition: all 0.3s;
       &-toggle {
+        display: block;
         position: absolute;
-        top: 0;
+        top: 97px;
         width: 100%;
         padding: 0 10px;
         height: 60px;
         line-height: 60px;
         text-align: center;
         cursor: pointer;
-        background-color: #0d6efd;
+        background-color: #ffffff;
+        color: #00A7FF;
         transition: 0.1s;
+        z-index: 1000;
       }
-      &-toggle:hover {
-        background-color: #4d93fc;
+      &-content {
+        height: 300px;
+        overflow-y: auto;
+        transition: all 0.3s;
       }
-    }
-    &-lists-hide {
-      height: 60px;
+      &-content-hide {
+        height: 0;
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ const SvgCircle = ({
             stroke="rgba(0, 0, 0, .1)"
             strokeLinecap="round"
             strokeWidth={strokeWidth}
-            fill="none"
+            fill="#00A7FF"
           />
         </g>
       </svg>
@@ -58,8 +58,8 @@ const SvgCircle = ({
 SvgCircle.defaultProps = {
   done: 0,
   max: 24,
-  radius: 100,
-  stroke: "#ff4759",
+  radius: 180,
+  stroke: "#00A7FF",
   strokeWidth: 8,
 };
 
