@@ -1,12 +1,12 @@
 .drawingView {
-    padding: 30px;
-    .drawingView-panel {
-        width: 100%;
-    }
+  padding: 30px;
+  .drawingView-panel {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .drawingView {
-        height: 60vh;
-    }
+  .drawingView {
+    height: 60vh;
+  }
 }

@@ -1,19 +1,19 @@
-@import '~normalize.css';
+@import "~normalize.css";
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .border-s {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .border-m {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .border-l {
-    border-radius: 20px;
+  border-radius: 20px;
 }

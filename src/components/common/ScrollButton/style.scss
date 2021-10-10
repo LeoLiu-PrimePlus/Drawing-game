@@ -1,25 +1,24 @@
 .scrollButton {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 992px) {
-    .scrollButton {
-        height: 80px;
-        width: 80px;
-        border-radius: 100%;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        line-height: 80px;
-        text-align: center;
-        cursor: pointer;
-        transition: 0.2s;
-        transform: scale(1);
-        display: block;
-    }
-    
-    .scrollButton:hover {
-        transform: scale(1.1);
-    }
-    
+  .scrollButton {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    line-height: 80px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    transform: scale(1);
+    display: block;
+  }
+
+  .scrollButton:hover {
+    transform: scale(1.1);
+  }
 }

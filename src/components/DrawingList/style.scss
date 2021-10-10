@@ -1,38 +1,38 @@
 .drawingList {
-    padding: 20px 40px;
-    &-lists {
-        height: 400px;
-        overflow: scroll;
-    }
+  padding: 20px 40px;
+  &-lists {
+    height: 400px;
+    overflow: scroll;
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .drawingList {
-        padding: 20px 40px;
-        &-lists {
-            padding-top: 60px;
-            position: relative;
-            height: 400px;
-            overflow: scroll;
-            transition: all 0.3s;
-            &-toggle {
-                position: absolute;
-                top: 0;
-                width: 100%;
-                padding: 0 10px;
-                height: 60px;
-                line-height: 60px;
-                text-align: center;
-                cursor: pointer;
-                background-color: #0d6efd;
-                transition: 0.1s;
-            }
-            &-toggle:hover {
-                background-color: #4d93fc;
-            }
-        }
-        &-lists-hide {
-            height: 60px;
-        }
+  .drawingList {
+    padding: 20px 40px;
+    &-lists {
+      padding-top: 60px;
+      position: relative;
+      height: 400px;
+      overflow: scroll;
+      transition: all 0.3s;
+      &-toggle {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 0 10px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        cursor: pointer;
+        background-color: #0d6efd;
+        transition: 0.1s;
+      }
+      &-toggle:hover {
+        background-color: #4d93fc;
+      }
     }
+    &-lists-hide {
+      height: 60px;
+    }
+  }
 }

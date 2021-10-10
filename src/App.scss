@@ -1,17 +1,23 @@
-.main {
+@import "./styles/variables.scss";
+
+.wrap {
   width: 100%;
+  height: 100vh;
+  padding: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3vh 0;
+  background-color: $primary;
 }
 
-.card {
+.content {
   margin: 0 auto;
   overflow: hidden;
+  max-width: 900px;
+  border: 1px solid #ffffff;
 }
 
 .tipTitle {
-  padding: 15px 10px;
-  text-align: center;
+  text-align: left;
+  padding: 10px 0;
 }
