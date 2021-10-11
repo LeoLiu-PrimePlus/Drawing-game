@@ -98,6 +98,8 @@ const CountDown = ({ handleSelectMode }) => {
       handleCountDownType(countDownType);
     } else if (e.key === 'Backspace') {
       deleteInputTime(timeType)
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      timeInputFieldMove(timeType, e.key)
     }
   };
 
@@ -141,6 +143,22 @@ const CountDown = ({ handleSelectMode }) => {
     }
   };
 
+  const timeInputFieldMove = (timeType, key) => {
+    if (timeType === 'minTen' && key === 'ArrowRight') {
+      minInput.focus()
+    } else if (timeType === 'min' && key === 'ArrowRight') {
+      secTenInput.focus()
+    } else if (timeType === 'min' && key === 'ArrowLeft') {
+      minTenInput.focus()
+    } else if (timeType === 'secTen' && key === 'ArrowRight') {
+      secInput.focus()
+    } else if (timeType === 'secTen' && key === 'ArrowLeft') {
+      minInput.focus()
+    } else if (timeType === 'sec' && key === 'ArrowLeft') {
+      secTenInput.focus()
+    }
+  }
+
   return (
     <div className="countDown row h-100">
       {
@@ -148,7 +166,7 @@ const CountDown = ({ handleSelectMode }) => {
           <div className="countDown-circle flex-center">
             <SvgCircle circleBgColor={'#00A7FF'}>
               <div>
-                <div className="flex no-wrap mb-2">
+                <div className="flex-center no-wrap mb-2">
                   <input
                     className="countDown-circle-input"
                     maxLength="2"
@@ -156,7 +174,7 @@ const CountDown = ({ handleSelectMode }) => {
                     ref={(input) => { minTenInput = input; }}
                     value={minTen}
                     onChange={e => handleInputTime(e,'minTen')}
-                    onKeyDown={(e) => handleInputEnter(e, "start")}
+                    onKeyDown={(e) => handleInputEnter(e, "start", 'minTen')}
                   />
                   <input
                     className="countDown-circle-input"
@@ -204,8 +222,8 @@ const CountDown = ({ handleSelectMode }) => {
           </div>
         ) : (
           <div className="countDown-circle flex-center">
-            <SvgCircle max={counterMax} done={counter} circleBgColor={'#FFFFFF'} >
-              <div className="flex no-wrap countDown-circle-clock mb-2">
+            <SvgCircle className={'svgAnimation'} max={counterMax} done={counter} circleBgColor={'#FFFFFF'} >
+              <div className="flex-center no-wrap countDown-circle-clock mb-2">
                 {minTen}{min}:{secTen}{sec}
               </div>
               <div className="d-flex justify-content-between">

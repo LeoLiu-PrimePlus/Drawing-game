@@ -44,7 +44,7 @@ const SvgCircle = ({
       >
         <g>
           <circle
-            className="circle"
+            className={`circle ${className}`}
             r={radius}
             cx={radius + strokeWidth}
             cy={radius + strokeWidth}
