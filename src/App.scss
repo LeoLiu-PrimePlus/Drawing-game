@@ -8,13 +8,25 @@
   justify-content: center;
   align-items: center;
   background-color: #FAFAFA;
+  .content {
+    margin: 0 auto;
+    overflow: hidden;
+    min-width: 992px;
+    max-width: 60vw;
+    height: 700px;
+    background-color: $primary;
+  }
 }
 
-.content {
-  margin: 0 auto;
-  overflow: hidden;
-  min-width: 992px;
-  max-width: 60vw;
-  height: 700px;
-  background-color: $primary;
+@media screen and (max-width: 992px) {
+  .wrap {
+    background-color: $primary;
+    // height: auto;
+    padding: 0;
+    .content {
+      overflow-y: auto;
+      min-width: unset;
+      max-width: 100%;
+    }
+  }
 }

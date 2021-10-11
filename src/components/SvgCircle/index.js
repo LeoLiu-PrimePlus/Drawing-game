@@ -1,4 +1,5 @@
 import "./style.scss";
+import { useState, useEffect } from "react";
 
 const SvgCircle = ({
   className,
@@ -7,13 +8,29 @@ const SvgCircle = ({
   radius,
   stroke,
   strokeWidth,
+  circleBgColor,
   children,
 }) => {
+  const [width, setWindowWidth] = useState(0)
+
+  useEffect(() => { 
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => 
+      window.removeEventListener('resize',updateDimensions);
+  }, [])
+  if (width < 576) radius = 160;
   const size = (radius + strokeWidth) * 2;
   const length = Math.ceil(2 * radius * Math.PI);
   let remainingLength = 0;
   if (max !== 0) {
     remainingLength = length - Math.ceil(2 * radius * Math.PI) * (done / max);
+  }
+
+
+  const updateDimensions = () => {
+    const width = window.innerWidth
+    setWindowWidth(width)
   }
 
   return (
@@ -36,7 +53,7 @@ const SvgCircle = ({
             strokeDashoffset={remainingLength}
             strokeLinecap="round"
             strokeWidth={strokeWidth}
-            fill="none"
+            fill="rgba(0, 0, 0, 0)"
           />
           <circle
             className="circle--bg"
@@ -46,11 +63,11 @@ const SvgCircle = ({
             stroke="rgba(0, 0, 0, .1)"
             strokeLinecap="round"
             strokeWidth={strokeWidth}
-            fill="#00A7FF"
+            fill={circleBgColor}
           />
         </g>
       </svg>
-      <div className="textContent fs-1">{children}</div>
+      <div className="textContent">{children}</div>
     </div>
   );
 };
@@ -58,9 +75,9 @@ const SvgCircle = ({
 SvgCircle.defaultProps = {
   done: 0,
   max: 24,
-  radius: 180,
+  radius: 240,
   stroke: "#00A7FF",
-  strokeWidth: 8,
+  strokeWidth: 20,
 };
 
 export default SvgCircle;

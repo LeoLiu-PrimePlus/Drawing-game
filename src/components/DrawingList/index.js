@@ -9,6 +9,7 @@ import {
   deleteDrawingList,
   deleteAllDrawingLists,
   notifyMessage,
+  changeStep
 } from "../../store/actions";
 import { useState } from "react";
 
@@ -100,6 +101,18 @@ const DrawingList = ({ className }) => {
     setToggleLists(!toggleLists);
   };
 
+  const handleNextToCountDown = () => {
+    if (drawingLists.length === 0) {
+      const notifyObj = {
+        msg: "Add one list at least!",
+        type: "error",
+      };
+      dispatch(notifyMessage(notifyObj));
+    } else {
+      dispatch(changeStep('selectMode'));
+    }
+  }
+
   return (
     <div className={`${className} drawingList`}>
       <div className="mb-1 d-flex align-items-center">
@@ -117,7 +130,7 @@ const DrawingList = ({ className }) => {
           <i className="far fa-trash-alt text-white me-2"></i>
         </Button>
       </div>
-      <div className="drawingList-input-group input-group-sm mb-3 d-flex">
+      <div className="drawingList-input-group input-group-sm d-flex">
         <input
           type="text"
           className="w-50 form-control"
@@ -133,17 +146,20 @@ const DrawingList = ({ className }) => {
         </Button>
       </div>
       <div
-        className="drawingList-lists list-group"
+        className="drawingList-lists list-group mb-2"
       >
-        <h4 className="drawingList-lists-header text-white">
+        <h4 className={`drawingList-lists-header text-white ${drawingLists.length > 0 ? 'drawingList-lists-header--expand' : ''}`}>
           Drawing lists
         </h4>
-        <div
-          className="drawingList-lists-toggle"
-          onClick={() => handleToggleLists()}
-        >
-          Toggle lists
-        </div>
+        {
+          drawingLists.length > 0 &&
+          <div
+            className="drawingList-lists-toggle"
+            onClick={() => handleToggleLists()}
+          >
+            Toggle lists
+          </div>
+        }
         <div className={`drawingList-lists-content ${
           toggleLists ? "drawingList-lists-content-hide" : ""
         }`}>
@@ -161,6 +177,7 @@ const DrawingList = ({ className }) => {
           )}
         </div>
       </div>
+      <Button label={'Next'} className={'drawingList-btn btn text-white'} handleClick={handleNextToCountDown} />
     </div>
   );
 };

@@ -4,26 +4,112 @@
   position: relative;
   &-bg--right {
     background-color: #E5F3FF;
+    padding-top: 50px;
+    .btn {
+      font-size: 40px;
+      font-style: italic;
+      color: $primary;
+      border-bottom: 2px solid $primary;
+      border-radius: 0;
+      display: block;
+    }
+    .btn--mobile {
+      display: none;
+    }
   }
-  .countDown-clock-input {
-    width: 32px;
-    font-size: 50px;
+  .countDown-circle {
+    position: absolute;
+    width: 400px;
+    top: 50%;
+    left: 48%;
+    z-index: 100;
+    transform: translate(-23%, -61%);
+    span {
+      font-size: 70px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+  }
+  .countDown-circle-input {
+    width: 50px;
+    font-size: 70px;
+    font-weight: 700;
     text-align: center;
     color: #FFFFFF;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #FFFFFF;
   }
-  .countDown-clock-input:focus {
+  .countDown-circle-input:focus {
     outline: #3888ff;
     // background-color: rgba($color: #ffffff, $alpha: 1.0);
   }
-  .countDown-clock {
-    position: absolute;
-    top: 50%;
-    left: 48%;
-    z-index: 100;
-    // transform: translateY(-60%);
-    transform: translate(-40%, -61%);
+  .countDown-circle-clock {
+    font-size: 70px;
+    letter-spacing: 5px;
+    height: 83px;
+    font-weight: 700;
+    color: #00A7FF;
+  }
+  .countDown-circle-btn {
+    color: #FFFFFF;
+    font-size: 36px;
+  }
+  .countDown-circle-btn--start {
+    color: #00A7FF;
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .countDown {
+    &-bg--right {
+      background-color: $primary;
+    }
+    .countDown-circle {
+      width: 400px;
+      top: 50%;
+      left: 50%;
+      z-index: 100;
+      transform: translate(-50%, -50%);
+    }
+    .btn--desktop {
+      display: none;
+    }
+    .btn--mobile {
+      display: block;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      z-index: 20;
+      color: #FFFFFF;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .countDown {
+    .countDown-circle {
+      width: 300px;
+    }
+    .countDown-circle-input {
+      width: 45px;
+      font-size: 60px;
+      font-weight: 700;
+      text-align: center;
+      color: #FFFFFF;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #FFFFFF;
+    }
+    .countDown-circle-clock {
+      font-size: 60px;
+      letter-spacing: 3px;
+      height: 83px;
+      font-weight: 700;
+      color: #00A7FF;
+      text-align: center;
+    }
   }
 }

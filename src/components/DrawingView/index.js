@@ -1,7 +1,5 @@
 import "./style.scss";
-// import { useState } from "react";
 import CountDown from "../CountDown";
-// import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Winner from "../Winner";
 import Button from '../common/Button'
 import { selectDrawingLists, selectStep } from "../../store/selectors";
@@ -12,6 +10,7 @@ const DrawingView = ({ className }) => {
   const drawingLists = useSelector(selectDrawingLists);
   const step = useSelector(selectStep);
   const dispatch = useDispatch();
+  console.log('step', step)
 
   const handleSelectMode = (type) => {
     if (type !== step) {
@@ -33,7 +32,7 @@ const DrawingView = ({ className }) => {
   return (
     <div id="targetId" className={`${className} ${step !== 'init' ? 'p-0' : ''} drawingView h-100`}>
       {step === "init" ? (
-        <div className="drawingView-panel h-100">
+        <div className="drawingView-panel ps-3 h-100">
           {step === "init" ? (
             <div>
               <div className="mb-3 d-flex align-items-center">
@@ -59,6 +58,18 @@ const DrawingView = ({ className }) => {
       ) : step === "countDown" ? (
         <div className="drawingView-panel h-100">
           <CountDown handleSelectMode={handleSelectMode} />
+        </div>
+      ) : step === "selectMode" ? (
+        <div className="flex-center h-100">
+          <div>
+            <Button label={'Start without set countdown'} className={'btn text-white mb-4 fs-5'} param={'drawing'} handleClick={handleSelectMode}>
+              <i className="fas fa-dice-d6 text-white me-2"></i>
+            </Button>
+            <br/>
+            <Button label={'Start set countdown'} className={'btn text-white fs-5'} param={'countDown'} handleClick={handleSelectMode}>
+              <i className="far fa-clock text-white me-2"></i>
+            </Button>
+          </div>
         </div>
       ) : (
         <Winner handleSelectMode={handleSelectMode} />

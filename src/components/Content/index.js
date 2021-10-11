@@ -12,8 +12,8 @@ const Content = () => {
         {
             step === 'init' ? (
               <>
-                <DrawingView className={"col-12 col-lg-6"} />
-                <DrawingList className={"col-lg-6"} />
+                <DrawingView className={"DrawingView-mobile col-12 col-lg-6"} />
+                <DrawingList className={"DrawingList-mobile col-lg-6"} />
               </>
             ) :<DrawingView className={"col-12"} />
         }      

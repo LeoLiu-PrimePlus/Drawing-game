@@ -7,4 +7,16 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg) rotateX(180deg);
   }
+  svg circle {
+    transition: 1s linear all;
+  }
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 1508px;
+    }
+  }
 }

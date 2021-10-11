@@ -1,0 +1,72 @@
+.winner {
+    padding-top: 50px;
+    &-content {
+        height: 200px;
+        &-tip {
+            animation: tipAnimation 1.5s ease;
+        }
+    }
+    &-btn {
+        border-bottom: 1px solid #FFFFFF;
+        border-radius: 0;
+    }
+}
+
+@keyframes tipAnimation
+{
+    0% {
+        transform: scale(0) rotate(0deg);
+    }
+    10% {
+        transform: scale(0.25) rotate(360deg);
+    }
+    20% {
+        transform: scale(0.5) rotate(720deg);
+    }
+    30% {
+        transform: scale(0.75) rotate(1080deg);
+    }
+    40% {
+        transform: scale(1) rotate(1440deg);
+    }
+    50% {
+        transform: scale(1.3) rotate(1440deg);
+    }
+    60% {
+        transform: scale(0.7) rotate(1440deg);
+    }
+    70% {
+        transform: scale(1.2) rotate(1440deg);
+    }
+    75% {
+        transform: scale(0.8) rotate(1440deg);
+    }
+    80% {
+        transform: scale(1.1) rotate(1440deg);
+    }
+    85% {
+        transform: scale(0.9) rotate(1440deg);
+    }
+    90% {
+        transform: scale(1.05) rotate(1440deg);
+    }
+    95% {
+        transform: scale(0.95) rotate(1440deg);
+    }
+    100% {
+        transform: scale(1) rotate(1440deg);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .winner {
+        &-content {
+            padding: 0 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            &-tip {
+                animation: tipAnimation 1.5s ease;
+            }
+        }
+    }
+  }

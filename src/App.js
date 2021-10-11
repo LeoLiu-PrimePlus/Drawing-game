@@ -1,7 +1,6 @@
 import "./App.scss";
 import Header from "./components/Header";
 import Content from "./components/Content";
-import ScrollButton from "./components/common/ScrollButton";
 import Notify from "./components/common/Notify";
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
         <Header />
         <Content />
       </div>
-      <ScrollButton />
       <Notify />
     </div>
   );

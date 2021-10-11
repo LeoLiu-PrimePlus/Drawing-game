@@ -2,6 +2,7 @@
   padding: 20px 40px;
   &-input-group {
     padding-left: 0.6rem;
+    margin-bottom: 1rem;
     input {
       border-bottom-right-radius: 0 !important;
       border-top-right-radius: 0 !important;
@@ -20,7 +21,7 @@
     &-toggle {
       display: none;
     }
-    h4 {
+    &-header {
       font-size: 1.2rem;
       margin: 0;
       background-color: #335A83;
@@ -45,13 +46,19 @@
 @media screen and (max-width: 992px) {
   .drawingList {
     padding: 20px 40px;
+    &-input-group {
+      margin-bottom: 1.5rem;
+    }
     &-lists {
-      padding-top: 60px;
+      height: 400px;
       position: relative;
+      &-header--expand {
+        margin-bottom: 60px;
+      }
       &-toggle {
         display: block;
         position: absolute;
-        top: 97px;
+        top: 38px;
         width: 100%;
         padding: 0 10px;
         height: 60px;
@@ -71,6 +78,17 @@
       &-content-hide {
         height: 0;
       }
+    }
+    &-btn {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 36px;
+      font-style: italic;
+      border-radius: 0;
+      border-bottom: 2px solid #FFFFFF;
+      z-index: 10;
     }
   }
 }

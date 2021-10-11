@@ -4,3 +4,11 @@
   background-color: #335A83;
   padding: 0.4rem 0.8rem;
 }
+
+@media screen and (max-width: 992px) {
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+}
