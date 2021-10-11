@@ -10,7 +10,6 @@ const DrawingView = ({ className }) => {
   const drawingLists = useSelector(selectDrawingLists);
   const step = useSelector(selectStep);
   const dispatch = useDispatch();
-  console.log('step', step)
 
   const handleSelectMode = (type) => {
     if (type !== step) {
@@ -61,7 +60,7 @@ const DrawingView = ({ className }) => {
         </div>
       ) : step === "selectMode" ? (
         <div className="flex-center h-100">
-          <div>
+          <div className="text-center p-2">
             <Button label={'Start without set countdown'} className={'btn text-white mb-4 fs-5'} param={'drawing'} handleClick={handleSelectMode}>
               <i className="fas fa-dice-d6 text-white me-2"></i>
             </Button>

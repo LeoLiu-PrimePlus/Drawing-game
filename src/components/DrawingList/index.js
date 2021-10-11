@@ -146,7 +146,7 @@ const DrawingList = ({ className }) => {
         </Button>
       </div>
       <div
-        className="drawingList-lists list-group mb-2"
+        className="drawingList-lists list-group"
       >
         <h4 className={`drawingList-lists-header text-white ${drawingLists.length > 0 ? 'drawingList-lists-header--expand' : ''}`}>
           Drawing lists

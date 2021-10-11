@@ -42,7 +42,6 @@ export const notifyMessage = (notify) => {
 };
 
 export const changeStep = (step) => {
-    console.log('step', step)
   return {
     type: CHANGE_STEP,
     payload: { step },

@@ -18,6 +18,7 @@
   }
   &-lists {
     overflow: hidden;
+    margin-bottom: 20px;
     &-toggle {
       display: none;
     }
@@ -52,6 +53,7 @@
     &-lists {
       height: 400px;
       position: relative;
+      margin-bottom: 80px;
       &-header--expand {
         margin-bottom: 60px;
       }

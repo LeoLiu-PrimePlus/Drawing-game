@@ -4,6 +4,11 @@
         height: 200px;
         &-tip {
             animation: tipAnimation 1.5s ease;
+            > div {
+                color: #00d9ff;
+                font-weight: 700;
+                font-size: 40px;
+            }
         }
     }
     &-btn {

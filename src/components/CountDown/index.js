@@ -27,7 +27,6 @@ const CountDown = ({ handleSelectMode }) => {
         if (counter > 0) {
           setCounter(counter - 1);
           const sec = 1, secTen = sec * 10, min = sec * 60, minTen = sec * 60 * 10
-          console.log(counter / minTen / 10)
           setMinTen(Math.floor(counter / minTen))
           setMin(Math.floor(counter % minTen / min))
           setSecTen(Math.floor(counter % min / secTen))
@@ -106,12 +105,9 @@ const CountDown = ({ handleSelectMode }) => {
   const handleCountDownType = (type) => {
     if (type !== countDownType) {
       if (type === "start") {
-        console.log('newCounter', minTen, min, secTen, sec)
         const newCounter = minTen * 10 * 60 + min * 60 + secTen * 10 + sec
-        console.log('newCounter', newCounter)
         if (!isNaN(newCounter)) {
           setCounter(newCounter);
-          console.log('counter', counter)
           if (newCounter && newCounter !== 0) {
             setCountDownType(type);
           } else {
