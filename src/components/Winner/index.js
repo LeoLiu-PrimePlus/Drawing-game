@@ -13,7 +13,7 @@ const Winner = ({ handleSelectMode }) => {
           <div className="winner-content-tip">
             Congratulation for the drawing game winner!!
             <br />
-            <div className="flex-center">
+            <div className="winner-content-tip-text flex-center">
               {
                 drawingLists[Math.floor(Math.random() * drawingLists.length)]
                   .name
