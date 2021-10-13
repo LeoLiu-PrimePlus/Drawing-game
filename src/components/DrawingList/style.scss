@@ -42,6 +42,9 @@
       overflow-y: auto;
     }
   }
+  &-btn {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -82,6 +85,7 @@
       }
     }
     &-btn {
+      display: block;
       position: fixed;
       bottom: 40px;
       left: 50%;
